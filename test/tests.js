@@ -29,3 +29,23 @@ describe('Shallow tests:', function () {
         assert.equal(sass, '$button-color: green\n$button-padding: 10px\n');
     });
 });
+
+describe('Deep tests:', function () {
+    var input, sass;
+
+    input  = json2sass.readFile('../test/deep.json');
+    sass   = json2sass.writeSass(input);
+
+    it('third argument should be a deep object', function () {
+        assert.deepEqual(input, {
+            button: {
+                color: 'green',
+                padding: '10px'
+            }
+        });
+    });
+
+    it('sass output should be', function () {
+        assert.equal(sass, '$button-color: green\n$button-padding: 10px\n');
+    });
+});
