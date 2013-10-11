@@ -1,0 +1,23 @@
+{
+  "name": "json2sass",
+  "version": "0.0.0",
+  "description": "Generate SASS vars files out of JSONs",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/renancouto/json2sass.git"
+  },
+  "keywords": [
+    "sass",
+    "json",
+    "node"
+  ],
+  "author": "Renan Couto <renancouto@gmail.com>",
+  "license": "GPL-v2",
+  "bugs": {
+    "url": "https://github.com/renancouto/json2sass/issues"
+  }
+}
