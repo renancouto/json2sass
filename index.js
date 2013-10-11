@@ -1,4 +1,6 @@
 /*jslint node:true*/
 'use strict';
 
-var fs = require('fs');
+var lib = require('./lib/json2sass');
+
+module.exports = lib;
