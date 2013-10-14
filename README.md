@@ -34,4 +34,13 @@ $button-font-color: white
 * Nodejs
 
 ## usage
+Using as a module:
+```javascript
+var json2sass = require('json2sass');
+json2sass.toSass('path/to/existing.json', 'path/to/created.sass');
+```
+
+Or by cloning the repo:
+```shell
 node . path/to/existing.json path/to/created.sass
+```

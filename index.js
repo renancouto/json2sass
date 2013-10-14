@@ -6,4 +6,8 @@ var args   = lib.setArgs();
 var input  = lib.readFile(args[0]);
 var output = lib.writeSass(input);
 
-lib.writeFile(args[1], output);
+if (args.length > 1) {
+    lib.writeFile(args[1], output);
+}
+
+module.exports = lib;
