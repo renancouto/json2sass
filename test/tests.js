@@ -4,7 +4,7 @@
 
 var assert    = require('chai').assert;
 var expect    = require('chai').expect;
-var json2sass = require('../index');
+var json2sass = require('../lib/json2sass');
 
 describe('Shallow tests:', function () {
     var args, input, output, sass;
@@ -38,14 +38,20 @@ describe('Deep tests:', function () {
 
     it('third argument should be a deep object', function () {
         assert.deepEqual(input, {
+            '/*': 'This is a special comment',
             button: {
+                '//': 'This is a simple comment',
                 color: 'green',
-                padding: '10px'
+                padding: '10px',
+                font: {
+                    family: "'Helvetica Arial sans-serif'",
+                    color: 'white'
+                }
             }
         });
     });
 
     it('sass output should be', function () {
-        assert.equal(sass, '$button-color: green\n$button-padding: 10px\n');
+        assert.equal(sass, "/**\n * This is a special comment\n */\n\n// This is a simple comment\n$button-color: green\n$button-padding: 10px\n$button-font-family: 'Helvetica Arial sans-serif'\n$button-font-color: white\n");
     });
 });

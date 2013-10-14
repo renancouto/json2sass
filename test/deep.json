@@ -1,6 +1,12 @@
 {
+    "/*": "This is a special comment",
     "button": {
+        "//": "This is a simple comment",
         "color": "green",
-        "padding": "10px"
+        "padding": "10px",
+        "font": {
+            "family": "'Helvetica Arial sans-serif'",
+            "color": "white"
+        }
     }
 }

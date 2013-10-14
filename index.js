@@ -1,9 +1,9 @@
 /*jslint node:true*/
 'use strict';
 
-var lib = require('./lib/json2sass');
-var input = lib.args()[0];
+var lib    = require('./lib/json2sass');
+var args   = lib.setArgs();
+var input  = lib.readFile(args[0]);
+var output = lib.writeSass(input);
 
-console.log(lib.writeSass(lib.readFile(input)));
-
-module.exports = lib;
+lib.writeFile(args[1], output);

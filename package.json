@@ -4,7 +4,7 @@
   "description": "Generate SASS vars files out of JSONs",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha --reporter spec"
   },
   "repository": {
     "type": "git",
