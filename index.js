@@ -2,12 +2,11 @@
 'use strict';
 
 var lib    = require('./lib/json2sass');
-var args   = lib.setArgs();
-var input  = lib.readFile(args[0]);
+var input  = lib.readFile(process.argv[2]);
 var output = lib.writeSass(input);
 
-if (args.length > 1) {
-    lib.writeFile(args[1], output);
+if (process.argv.length > 3) {
+    lib.writeFile(process.argv[3], output);
 }
 
 module.exports = lib;
