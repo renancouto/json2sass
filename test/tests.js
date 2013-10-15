@@ -1,18 +1,30 @@
 /*jslint node:true*/
-/*global describe,it*/
+/*global describe,it,before*/
 'use strict';
 
+var fs        = require('fs');
 var assert    = require('chai').assert;
 var expect    = require('chai').expect;
 var json2sass = require('../lib/json2sass');
 
 describe('Shallow tests:', function () {
-    var args, input, output, sass;
+    var args, input, output, sass, expected;
 
-    args   = ['../test/shallow.json', 'output.sass'];
-    input  = json2sass.readFile(args[0]);
-    output = json2sass.getOutput(args[1]);
-    sass   = json2sass.writeSass(input);
+    args     = ['../test/fixtures/shallow.json', 'output.sass'];
+    input    = json2sass.readFile(args[0]);
+    output   = json2sass.getOutput(args[1]);
+    sass     = json2sass.writeSass(input);
+
+    // read sass file
+    before(function () {
+        fs.readFile('./test/expected/shallow.sass', 'utf-8', function (err, data) {
+            if (err) {
+                console.log(err);
+            }
+
+            expected = data;
+        });
+    });
 
     it('third argument should be a object', function () {
         assert.deepEqual(input, {
@@ -26,15 +38,26 @@ describe('Shallow tests:', function () {
     });
 
     it('sass output should be', function () {
-        assert.equal(sass, '$button-color: green\n$button-padding: 10px\n');
+        assert.equal(sass, expected);
     });
 });
 
 describe('Deep tests:', function () {
-    var input, sass;
+    var input, sass, expected;
 
-    input  = json2sass.readFile('../test/deep.json');
+    input  = json2sass.readFile('../test/fixtures/deep.json');
     sass   = json2sass.writeSass(input);
+
+    // read sass file
+    before(function () {
+        fs.readFile('./test/expected/deep.sass', 'utf-8', function (err, data) {
+            if (err) {
+                console.log(err);
+            }
+
+            expected = data;
+        });
+    });
 
     it('third argument should be a deep object', function () {
         assert.deepEqual(input, {
@@ -47,11 +70,22 @@ describe('Deep tests:', function () {
                     family: "'Helvetica Arial sans-serif'",
                     color: 'white'
                 }
+            },
+            field: {
+                '//': 'Another comment',
+                color: '#fff'
+            },
+            table: {
+                '//': 'Table settings',
+                padding: {
+                    th: '10px',
+                    td: '5px 10px'
+                }
             }
         });
     });
 
     it('sass output should be', function () {
-        assert.equal(sass, "/**\n * This is a special comment\n */\n\n// This is a simple comment\n$button-color: green\n$button-padding: 10px\n$button-font-family: 'Helvetica Arial sans-serif'\n$button-font-color: white\n");
+        assert.equal(sass, expected);
     });
 });
