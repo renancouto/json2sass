@@ -15,8 +15,16 @@
     "json",
     "node"
   ],
-  "author": "Renan Couto <renancouto@gmail.com>",
-  "license": "GPL-v2",
+  "author": {
+    "name": "Renan Couto",
+    "email": "renancouto@gmail.com"
+  },
+  "licenses": [
+    {
+      "type": "GPL-2.0",
+      "url": "https://github.com/renancouto/json2sass/blob/master/LICENSE"
+    }
+  ],
   "bugs": {
     "url": "https://github.com/renancouto/json2sass/issues"
   },
