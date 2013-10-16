@@ -8,11 +8,10 @@ var expect    = require('chai').expect;
 var json2sass = require('../lib/json2sass');
 
 describe('Shallow tests:', function () {
-    var args, input, output, sass, expected;
+    var args, input, sass, expected;
 
     args   = ['../test/fixtures/shallow.json', 'output.sass'];
     input  = json2sass.readFile(args[0]);
-    output = json2sass.getOutput(args[1]);
     sass   = json2sass.writeSass(input);
 
     // read sass file
@@ -32,10 +31,6 @@ describe('Shallow tests:', function () {
             'button-color': 'green',
             'button-padding': '10px'
         });
-    });
-
-    it('fourth argument should exists', function () {
-        return expect(output).to.exist;
     });
 
     it('sass output should be', function () {
