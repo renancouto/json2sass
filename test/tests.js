@@ -12,7 +12,7 @@ describe('Shallow tests:', function () {
 
     args   = ['../test/fixtures/shallow.json', 'output.sass'];
     input  = json2sass.readFile(args[0]);
-    sass   = json2sass.writeSass(input);
+    sass   = json2sass.getContent(input, 'sass');
 
     // read sass file
     before(function (done) {
@@ -42,7 +42,7 @@ describe('Deep tests:', function () {
     var input, sass, expected;
 
     input = json2sass.readFile('../test/fixtures/deep.json');
-    sass  = json2sass.writeSass(input);
+    sass  = json2sass.getContent(input, 'sass');
 
     // read sass file
     before(function (done) {
@@ -102,7 +102,7 @@ describe('SCSS tests:', function () {
     var input, scss, expected;
 
     input = json2sass.readFile('../test/fixtures/shallow.json');
-    scss  = json2sass.writeScss(input);
+    scss  = json2sass.getContent(input, 'scss');
 
     // read scss file
     before(function (done) {

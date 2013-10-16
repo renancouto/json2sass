@@ -11,12 +11,12 @@ if (argv.input) {
     var type  = argv.type || 'sass';
 
     // Methods
-    var result = (type === 'sass') ? lib.writeSass(input) : lib.writeScss(input);
+    var content = lib.getContent(input, type);
 
     if (argv.output) {
-        lib.writeFile(argv.output, result);
+        lib.writeFile(argv.output, content);
     } else {
-        console.log('No output file passed, writing result to the shell:\n\n', result);
+        console.log('No output file passed, writing result to the shell:\n\n', content);
     }
 }
 
