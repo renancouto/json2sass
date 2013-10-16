@@ -102,3 +102,26 @@ describe('Deep tests:', function () {
         assert.equal(sass, expected);
     });
 });
+
+describe('SCSS tests:', function () {
+    var input, scss, expected;
+
+    input = json2sass.readFile('../test/fixtures/shallow.json');
+    scss  = json2sass.writeScss(input);
+
+    // read scss file
+    before(function (done) {
+        fs.readFile('./test/expected/shallow.scss', 'utf-8', function (err, data) {
+            if (err) {
+                console.log(err);
+            }
+
+            expected = data;
+            done();
+        });
+    });
+
+    it('scss output should be', function () {
+        assert.equal(scss, expected);
+    });
+});

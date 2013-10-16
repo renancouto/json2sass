@@ -1,5 +1,5 @@
 # json2sass
-> Generate SASS vars file out of a JSON
+> Generate SASS/SCSS vars files out of a JSON
 
 It turns this:
 ```json
@@ -38,9 +38,11 @@ Using as a module:
 ```javascript
 var json2sass = require('json2sass');
 json2sass.toSass('path/to/existing.json', 'path/to/created.sass');
+json2sass.toScss('path/to/existing.json', 'path/to/created.scss');
 ```
 
 Or by cloning the repo:
 ```shell
-node . path/to/existing.json path/to/created.sass
+node . --input path/to/existing.json --output path/to/created.sass
+node . --input path/to/existing.json --output path/to/created.scss --type scss
 ```
