@@ -84,6 +84,16 @@ describe('Deep tests:', function () {
                     th: '10px',
                     td: '5px 10px'
                 }
+            },
+            some: {
+                '//': 'Some very deep object',
+                very: {
+                    deep: {
+                        object: {
+                            key: 'value'
+                        }
+                    }
+                }
             }
         });
     });

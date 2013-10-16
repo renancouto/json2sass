@@ -1,6 +1,6 @@
 {
   "name": "json2sass",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Generate SASS vars files out of JSONs",
   "main": "index.js",
   "scripts": {
