@@ -14,7 +14,7 @@ if (argv.input) {
     var content = lib.getContent(input, type);
 
     if (argv.output) {
-        lib.writeFile(argv.output, content);
+        lib.writeFile(argv.input, argv.output, type);
     } else {
         console.log('No output file passed, writing result to the shell:\n\n', content);
     }
